@@ -19,6 +19,7 @@ add_library( # Sets the name of the library.
              # Associated headers in the same location as their source
              # file are automatically included.
              src/main/cpp/DumpDex.cy.cpp)
+
 include_directories(src/main/cpp/)
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -74,3 +75,9 @@ target_link_libraries( # Specifies the target library.
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
+target_link_libraries( # Specifies the target library.
+                       DumpDex.cy
+
+                       # Links the target library to the log library
+                       # included in the NDK.
+                       libsubstrate.so)
