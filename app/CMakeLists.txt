@@ -34,19 +34,35 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
-find_library( # Sets the name of the path variable.
-              substrate-dvm
+add_library( substrate-dvm
 
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              src/main/cpp/libsubstrate-dvm.so)
+             SHARED
 
-find_library( # Sets the name of the path variable.
-              substrate
+             IMPORTED )
 
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              src/main/cpp/libsubstrate.so)
+set_target_properties( # Specifies the target library.
+                       substrate-dvm
+
+                       # Specifies the parameter you want to define.
+                       PROPERTIES IMPORTED_LOCATION
+
+                       # Provides the path to the library you want to import.
+                       src/main/cpp/libsubstrate-dvm.so)
+
+add_library( substrate
+
+             SHARED
+
+             IMPORTED )
+
+set_target_properties( # Specifies the target library.
+                       substrate
+
+                       # Specifies the parameter you want to define.
+                       PROPERTIES IMPORTED_LOCATION
+
+                       # Provides the path to the library you want to import.
+                       src/main/cpp/libsubstrate.so)
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in the
